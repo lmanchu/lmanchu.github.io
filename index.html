@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>朱宜振 Lman Chu</title>
+<meta name="description" content="朱宜振 Lman Chu，IrisGo.AI 共同創辦人暨營運長。講者介紹、照片與可邀請的講題，主辦單位可直接複製使用。">
+<meta property="og:title" content="朱宜振 Lman Chu｜IrisGo.AI 共同創辦人暨營運長">
+<meta property="og:description" content="連續創業三十年，從 1994 年的校園 BBS 一路走到 AI PC。講者介紹、照片與講題。">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://lmanchu.github.io/">
+<meta property="og:image" content="https://lmanchu.github.io/photos/lman-hero-web.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --ground:#F4F7F2; --surface:#FFFFFF; --surface-2:#EAF0E7;
+    --ink:#12201B; --ink-soft:#4E5D57; --ink-faint:#7F8E88;
+    --line:#D7E0D4; --line-strong:#BCC8B8;
+    --accent:#10413B; --accent-ink:#FFFFFF;
+    --lime:#DDF79F; --lime-ink:#12201B;
+    --ok:#1F7A4D;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0E1613; --surface:#16211D; --surface-2:#1D2A25;
+      --ink:#E6EEE9; --ink-soft:#A1B2AB; --ink-faint:#71827B;
+      --line:#26352F; --line-strong:#3A4C45;
+      --accent:#8FD4B3; --accent-ink:#0E1613;
+      --lime:#DDF79F; --lime-ink:#12201B;
+      --ok:#8FD4B3;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0E1613; --surface:#16211D; --surface-2:#1D2A25;
+    --ink:#E6EEE9; --ink-soft:#A1B2AB; --ink-faint:#71827B;
+    --line:#26352F; --line-strong:#3A4C45;
+    --accent:#8FD4B3; --accent-ink:#0E1613;
+    --lime:#DDF79F; --lime-ink:#12201B;
+    --ok:#8FD4B3;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans","Noto Sans TC",-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;
+    font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  body:not([data-lang="en"]) .en{display:none!important}
+  body[data-lang="en"] .zh{display:none!important}
+  img{max-width:100%;display:block}
+  a{color:var(--accent)}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 24px 72px}
+
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+
+  .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .tog{display:inline-flex;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden}
+  .tog button{font:500 13px/1 "IBM Plex Mono",ui-monospace,monospace;background:var(--surface);color:var(--ink-soft);border:0;padding:8px 12px;cursor:pointer}
+  .tog button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+  button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:end;padding:44px 0 40px}
+  h1{margin:0;font-family:"Noto Sans TC","IBM Plex Sans",sans-serif;font-weight:700;font-size:clamp(40px,7vw,64px);line-height:1.05;letter-spacing:-.01em}
+  h1 .latin{display:block;font-family:"IBM Plex Sans",sans-serif;font-weight:500;font-size:.42em;letter-spacing:0;color:var(--ink-soft);margin-top:10px}
+  .title{margin:18px 0 0;font-size:19px;font-weight:600}
+  .lede{margin:14px 0 0;font-size:18px;color:var(--ink-soft);max-width:34ch;text-wrap:balance}
+  .facts{margin:28px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+  .facts dt{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);padding-top:3px}
+  .facts dd{margin:0}
+  .portrait{margin:0;border-radius:14px;overflow:hidden;background:var(--surface-2);aspect-ratio:4/5}
+  .portrait img{width:100%;height:100%;object-fit:cover}
+
+  section{padding:40px 0;border-top:1px solid var(--line)}
+  h2{margin:0 0 6px;font-family:"Noto Sans TC","IBM Plex Sans",sans-serif;font-size:24px;font-weight:700}
+  .sub{margin:0 0 22px;color:var(--ink-soft);font-size:15px}
+
+  .cards{display:grid;gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .card-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+  .card-label{font-weight:600;font-size:15px}
+  .card-meta{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--ink-faint);margin-left:10px;font-weight:400}
+  .txt{font-size:15.5px;line-height:1.8;max-width:68ch}
+  .txt p{margin:0 0 10px}
+  .txt p:last-child{margin-bottom:0}
+  .copy{flex:none;font:600 13px/1 "IBM Plex Sans","Noto Sans TC",sans-serif;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:8px;padding:9px 14px;cursor:pointer;min-width:84px}
+  .copy.done{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+
+  .photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .photo{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .photo .frame{aspect-ratio:4/5;background:var(--surface-2)}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo figcaption{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
+  .photo .dim{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--ink-faint)}
+  .dl{font-weight:600;text-decoration:none;white-space:nowrap}
+  .dl:hover{text-decoration:underline}
+
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{display:grid;grid-template-columns:88px 1fr;gap:18px;padding:14px 0;border-top:1px solid var(--line)}
+  .tl li:first-child{border-top:0}
+  .tl .yr{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:15px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums;padding-top:1px}
+  .tl .what{font-weight:600}
+  .tl .how{color:var(--ink-soft);font-size:15px;margin-top:2px}
+  .also{margin:18px 0 0;padding:14px 18px;background:var(--surface-2);border-radius:10px;font-size:15px;color:var(--ink-soft)}
+  .also b{color:var(--ink);font-weight:600}
+
+  .topics{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .topics li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .topics .t{font-weight:600}
+  .topics .d{color:var(--ink-soft);font-size:14.5px;margin-top:4px}
+
+  .links{display:flex;flex-wrap:wrap;gap:10px}
+  .links a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:9px 16px;font-weight:500;color:var(--ink)}
+  .links a:hover{border-color:var(--accent)}
+  .links .h{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;color:var(--ink-faint)}
+
+  footer{padding-top:28px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;gap:28px;padding-top:32px}
+    .portrait{max-width:320px;aspect-ratio:4/5}
+    .row2,.row3,.topics{grid-template-columns:1fr}
+    .photos{grid-template-columns:1fr}
+    .photo .frame{aspect-ratio:3/2}
+    .tl li{grid-template-columns:64px 1fr;gap:12px}
+    .card-h{align-items:flex-start}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="eyebrow"><span class="zh">講者資料 · Speaker kit</span><span class="en" lang="en">Speaker kit</span></span>
+    <div class="tog" role="group" aria-label="Language">
+      <button type="button" id="lang-zh" aria-pressed="true">中文</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1><span class="zh">朱宜振</span><span class="en" lang="en">Lman Chu</span><span class="latin"><span class="zh">Lman Chu</span><span class="en" lang="en">朱宜振</span></span></h1>
+      <p class="title"><span class="zh">IrisGo.AI 共同創辦人暨營運長</span><span class="en" lang="en">Co-founder &amp; COO, IrisGo.AI</span></p>
+      <p class="lede"><span class="zh">連續創業三十年，從 1994 年的校園 BBS 一路走到 AI PC。</span><span class="en" lang="en">Thirty years of starting things, from a 1994 campus bulletin board to the AI PC.</span></p>
+      <dl class="facts">
+        <dt><span class="zh">現職</span><span class="en" lang="en">Now</span></dt>
+        <dd><span class="zh">IrisGo.AI 共同創辦人暨營運長</span><span class="en" lang="en">Co-founder &amp; COO, IrisGo.AI</span></dd>
+        <dt><span class="zh">學歷</span><span class="en" lang="en">Education</span></dt>
+        <dd><span class="zh">成功大學化學 86、EMBA 95</span><span class="en" lang="en">Chemistry and EMBA, National Cheng Kung University</span></dd>
+        <dt><span class="zh">專長</span><span class="en" lang="en">Focus</span></dt>
+        <dd><span class="zh">AI PC、Agentic AI、新創營運、硬體通路合作</span><span class="en" lang="en">AI PC, agentic AI, startup operations, hardware partnerships</span></dd>
+      </dl>
+    </div>
+    <figure class="portrait"><img src="photos/lman-hero-web.jpg" alt="朱宜振 Lman Chu 在 AI 創新交流會分享" width="800" height="1000"></figure>
+  </div>
+
+  <section id="copy" aria-labelledby="copy-h">
+    <h2 id="copy-h"><span class="zh">講者介紹</span><span class="en" lang="en">Speaker bio</span></h2>
+    <p class="sub"><span class="zh">主辦單位可以直接複製使用，不需要另外詢問。依版面選一個長度。</span><span class="en" lang="en">Organisers are welcome to copy these as they are. Pick the length that fits your layout.</span></p>
+
+    <div class="cards">
+      <div class="row3">
+        <div class="card">
+          <div class="card-h"><span class="card-label"><span class="zh">姓名</span><span class="en" lang="en">Name</span></span><button type="button" class="copy" data-target="c-name"><span class="zh">複製</span><span class="en" lang="en">Copy</span></button></div>
+          <div class="txt" id="c-name"><span class="zh">朱宜振 Lman Chu</span><span class="en" lang="en">Lman Chu (朱宜振)</span></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><span class="card-label"><span class="zh">職稱</span><span class="en" lang="en">Title</span></span><button type="button" class="copy" data-target="c-title"><span class="zh">複製</span><span class="en" lang="en">Copy</span></button></div>
+          <div class="txt" id="c-title"><span class="zh">IrisGo.AI 共同創辦人暨營運長</span><span class="en" lang="en">Co-founder &amp; COO, IrisGo.AI</span></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><span class="card-label"><span class="zh">學歷</span><span class="en" lang="en">Education</span></span><button type="button" class="copy" data-target="c-edu"><span class="zh">複製</span><span class="en" lang="en">Copy</span></button></div>
+          <div class="txt" id="c-edu"><span class="zh">成功大學化學 86、EMBA 95</span><span class="en" lang="en">Chemistry and EMBA, National Cheng Kung University</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span class="card-label"><span class="zh">短版</span><span class="en" lang="en">Short</span><span class="card-meta" data-count="c-short"></span></span><button type="button" class="copy" data-target="c-short"><span class="zh">複製</span><span class="en" lang="en">Copy</span></button></div>
+        <div class="txt" id="c-short">
+          <p class="zh">朱宜振 Lman Chu，IrisGo.AI 共同創辦人暨營運長。1994 年在成大創辦電腦網路愛好社 CCNS，之後在硬體產業擔任產品經理十五年，陸續共同創辦 BiiLabs 與 Tallgeese AI。2024 年共同創辦 IrisGo，打造讓電腦替人工作的 AI PC 系統層，種子輪由吳恩達的 AI Fund 領投。</p>
+          <p class="en" lang="en">Lman Chu is Co-founder and COO of IrisGo.AI. In 1994 he founded the Computer Network Club (CCNS) at National Cheng Kung University, then spent fifteen years as a hardware product manager before co-founding BiiLabs and Tallgeese AI. In 2024 he co-founded IrisGo, which builds the system layer of the AI PC. Its seed round was led by Andrew Ng's AI Fund.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span class="card-label"><span class="zh">完整版</span><span class="en" lang="en">Full</span><span class="card-meta" data-count="c-full"></span></span><button type="button" class="copy" data-target="c-full"><span class="zh">複製</span><span class="en" lang="en">Copy</span></button></div>
+        <div class="txt" id="c-full">
+          <div class="zh">
+            <p>朱宜振 Lman Chu，IrisGo.AI 共同創辦人暨營運長，台灣第一代網路人。</p>
+            <p>1994 年，他在成大受學長與眾人之託，創辦電腦網路愛好社 CCNS 並擔任創社社長，將夢之大地 BBS 移入 CCNS 維護，後來成長為台灣前三大的 BBS 站。</p>
+            <p>進入業界後，他在凌華科技、Kontron Asia 等公司擔任產品經理超過十五年，負責工業電腦與嵌入式產品，經手的產品曾獲台灣精品獎與 Computex 台灣最佳外銷資訊產品獎。2014 年成立南星創速器（SSX）投入新創育成；2017 年共同創辦 BiiLabs，用分散式帳本解決物聯網的信任問題；2023 年共同創辦 Tallgeese AI，為企業提供隱私優先的 AI 方案。</p>
+            <p>2024 年，他以 Founder in Residence 身分在吳恩達的 AI Fund 花了半年驗證題目，之後共同創辦 IrisGo.AI。IrisGo 打造 AI PC 的系統層：使用者只要示範一次工作流程，它就能學會，下次自動完成。IrisGo 種子輪由 AI Fund 領投，並與 Intel、Acer 等 AI PC 品牌合作。</p>
+          </div>
+          <div class="en" lang="en">
+            <p>Lman Chu is Co-founder and COO of IrisGo.AI, and one of Taiwan's first generation of internet builders.</p>
+            <p>In 1994, he founded the Computer Network Club (CCNS) at National Cheng Kung University and brought the DreamLand BBS under its care. It grew into one of Taiwan's three largest bulletin board systems.</p>
+            <p>He then spent more than fifteen years as a product manager at ADLINK, Kontron Asia and other hardware companies, working on industrial and embedded computing. Products he managed won the Taiwan Excellence Award and a Computex award for Taiwan's best exported IT products. He started the SouthStar Xelerator (SSX) accelerator in 2014, co-founded BiiLabs in 2017 to bring distributed-ledger trust to IoT, and co-founded Tallgeese AI in 2023 to offer privacy-first AI to enterprises.</p>
+            <p>In 2024, he spent six months validating an idea as a Founder in Residence at Andrew Ng's AI Fund, then co-founded IrisGo.AI. IrisGo builds the system layer of the AI PC: show it a workflow once, and it learns to do the work itself. AI Fund led IrisGo's seed round, and the company works with AI PC brands including Intel and Acer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card zh">
+        <div class="card-h"><span class="card-label">英文短版<span class="card-meta" data-count="c-short-en"></span></span><button type="button" class="copy" data-target="c-short-en">複製</button></div>
+        <div class="txt" id="c-short-en" lang="en"><p>Lman Chu is Co-founder and COO of IrisGo.AI. In 1994 he founded the Computer Network Club (CCNS) at National Cheng Kung University, then spent fifteen years as a hardware product manager before co-founding BiiLabs and Tallgeese AI. In 2024 he co-founded IrisGo, which builds the system layer of the AI PC. Its seed round was led by Andrew Ng's AI Fund.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" aria-labelledby="photos-h">
+    <h2 id="photos-h"><span class="zh">照片</span><span class="en" lang="en">Photos</span></h2>
+    <p class="sub"><span class="zh">海報與宣傳可直接使用，點「下載原圖」取得高解析度檔。</span><span class="en" lang="en">Free to use for posters and promotion. "Download" gets the full-resolution file.</span></p>
+    <div class="photos">
+      <figure class="photo">
+        <div class="frame"><img src="photos/lman-stage-web.jpg" alt="朱宜振在 AI 創新交流會台上分享" loading="lazy" width="960" height="640" style="object-position:61% 30%"></div>
+        <figcaption><span><span class="zh">演講</span><span class="en" lang="en">On stage</span> <span class="dim">3374×2249</span></span><a class="dl" href="photos/lman-stage.jpg" download><span class="zh">下載原圖</span><span class="en" lang="en">Download</span></a></figcaption>
+      </figure>
+      <figure class="photo">
+        <div class="frame"><img src="photos/lman-outdoor-1-web.jpg" alt="朱宜振 戶外人像" loading="lazy" width="720" height="960"></div>
+        <figcaption><span><span class="zh">人像</span><span class="en" lang="en">Portrait</span> <span class="dim">2316×3088</span></span><a class="dl" href="photos/lman-outdoor-1.jpg" download><span class="zh">下載原圖</span><span class="en" lang="en">Download</span></a></figcaption>
+      </figure>
+      <figure class="photo">
+        <div class="frame"><img src="photos/lman-outdoor-2-web.jpg" alt="朱宜振 戶外人像側面" loading="lazy" width="720" height="960"></div>
+        <figcaption><span><span class="zh">人像 2</span><span class="en" lang="en">Portrait 2</span> <span class="dim">2316×3088</span></span><a class="dl" href="photos/lman-outdoor-2.jpg" download><span class="zh">下載原圖</span><span class="en" lang="en">Download</span></a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="timeline" aria-labelledby="tl-h">
+    <h2 id="tl-h"><span class="zh">經歷</span><span class="en" lang="en">Path</span></h2>
+    <p class="sub"><span class="zh">從網路社群、硬體、新創育成，到 AI。</span><span class="en" lang="en">Internet communities, hardware, accelerators, then AI.</span></p>
+    <ol class="tl">
+      <li><span class="yr">2024–</span><div><div class="what"><span class="zh">共同創辦 IrisGo.AI，任營運長</span><span class="en" lang="en">Co-founded IrisGo.AI, COO</span></div><div class="how"><span class="zh">先以 Founder in Residence 身分在 AI Fund 驗證題目半年。種子輪 US$3.1M 由 AI Fund 領投。</span><span class="en" lang="en">Validated the idea for six months as a Founder in Residence at AI Fund first. US$3.1M seed round led by AI Fund.</span></div></div></li>
+      <li><span class="yr">2023</span><div><div class="what"><span class="zh">共同創辦 Tallgeese AI</span><span class="en" lang="en">Co-founded Tallgeese AI</span></div><div class="how"><span class="zh">企業隱私優先的 AI 方案。</span><span class="en" lang="en">Privacy-first AI for enterprises.</span></div></div></li>
+      <li><span class="yr">2017</span><div><div class="what"><span class="zh">共同創辦 BiiLabs</span><span class="en" lang="en">Co-founded BiiLabs</span></div><div class="how"><span class="zh">以分散式帳本解決物聯網的信任問題。</span><span class="en" lang="en">Distributed-ledger trust for IoT.</span></div></div></li>
+      <li><span class="yr">2014</span><div><div class="what"><span class="zh">成立南星創速器 SSX</span><span class="en" lang="en">Started SouthStar Xelerator (SSX)</span></div><div class="how"><span class="zh">投入科技新創育成。</span><span class="en" lang="en">A tech startup accelerator.</span></div></div></li>
+      <li><span class="yr">2004</span><div><div class="what"><span class="zh">硬體產品經理十五年以上</span><span class="en" lang="en">Fifteen-plus years in hardware product management</span></div><div class="how"><span class="zh">凌華科技、南京資訊、Kontron Asia。經手產品獲 2004、2005 台灣精品獎，2004 Computex 台灣最佳外銷資訊產品獎。</span><span class="en" lang="en">ADLINK, Kontron Asia and others. Products won the Taiwan Excellence Award in 2004 and 2005, and a Computex best exported IT product award in 2004.</span></div></div></li>
+      <li><span class="yr">1994</span><div><div class="what"><span class="zh">創辦成大電腦網路愛好社 CCNS</span><span class="en" lang="en">Founded CCNS at National Cheng Kung University</span></div><div class="how"><span class="zh">任創社社長，將夢之大地 BBS 移入 CCNS，後成為台灣前三大 BBS 站。</span><span class="en" lang="en">First president; brought the DreamLand BBS into the club, where it became one of Taiwan's three largest.</span></div></div></li>
+    </ol>
+    <p class="also"><span class="zh"><b>其他</b>　數位時代創新顧問、專欄作家；MOX 加速器 Mentor。</span><span class="en" lang="en"><b>Also</b>　Innovation advisor and columnist, Business Next; mentor, MOX accelerator.</span></p>
+  </section>
+
+  <section id="topics" aria-labelledby="topics-h">
+    <h2 id="topics-h"><span class="zh">可以邀我講的題目</span><span class="en" lang="en">Talks I give</span></h2>
+    <p class="sub"><span class="zh">可依聽眾調整長度與深度，學生、企業、創業社群都講過。</span><span class="en" lang="en">Length and depth adjust to the room: students, companies, founder communities.</span></p>
+    <ul class="topics">
+      <li><div class="t"><span class="zh">AI 會怎麼改變你的工作</span><span class="en" lang="en">How AI will change your work</span></div><div class="d"><span class="zh">從會聊天的 AI，到會替你動手的 agent。</span><span class="en" lang="en">From AI that chats to agents that act for you.</span></div></li>
+      <li><div class="t"><span class="zh">創業三十年：從校園 BBS 到 AI PC</span><span class="en" lang="en">Thirty years of starting things</span></div><div class="d"><span class="zh">每一次轉彎學到什麼，哪些是運氣、哪些是準備。</span><span class="en" lang="en">From a campus BBS to the AI PC, and what each turn taught.</span></div></li>
+      <li><div class="t"><span class="zh">台灣團隊怎麼走進 AI Fund</span><span class="en" lang="en">A Taiwan team inside AI Fund</span></div><div class="d"><span class="zh">先驗證題目再成立公司，矽谷與台灣怎麼接起來。</span><span class="en" lang="en">Validating before incorporating, and bridging Silicon Valley and Taiwan.</span></div></li>
+      <li><div class="t"><span class="zh">AI Native 公司怎麼運作</span><span class="en" lang="en">How an AI-native company runs</span></div><div class="d"><span class="zh">一個人，太多前線：跟 agent 一起工作的方法與翻車。</span><span class="en" lang="en">One person, too many fronts: working with agents, including what broke.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h"><span class="zh">聯絡</span><span class="en" lang="en">Contact</span></h2>
+    <p class="sub"><span class="zh">演講與合作邀約請來信，也可以透過 LinkedIn 私訊。</span><span class="en" lang="en">For talks and collaboration, email me or send a LinkedIn message.</span></p>
+    <div class="links">
+      <a href="mailto:Lman.chu@gmail.com">Email <span class="h">Lman.chu@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/lmanchu" rel="me noopener">LinkedIn <span class="h">/in/lmanchu</span></a>
+      <a href="https://x.com/lmanchu" rel="me noopener">X <span class="h">@lmanchu</span></a>
+      <a href="https://irisgo.ai" rel="noopener">IrisGo.AI <span class="h">irisgo.ai</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <span><span class="zh">最後更新</span><span class="en" lang="en">Updated</span> 2026-09-14</span>
+    <span>1994 telnet → 2026 AI PC</span>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var body=document.body, KEY='lmanchu-lang';
+  function get(){try{return localStorage.getItem(KEY)}catch(e){return null}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function apply(l){
+    if(l==='en'){body.setAttribute('data-lang','en');document.documentElement.lang='en'}
+    else{body.removeAttribute('data-lang');document.documentElement.lang='zh-Hant'}
+    document.getElementById('lang-zh').setAttribute('aria-pressed',l!=='en');
+    document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
+    counts();
+  }
+  function visibleText(el){
+    var parts=[];
+    el.querySelectorAll('p, span').forEach(function(n){
+      if(n.offsetParent===null) return;
+      if(n.tagName==='SPAN' && n.querySelector('span')) return;
+      if(n.tagName==='SPAN' && n.closest('p')) return;
+      var t=n.innerText.trim(); if(t) parts.push(t);
+    });
+    if(!parts.length){var t=el.innerText.trim(); if(t) parts.push(t);}
+    return parts.join('\n\n');
+  }
+  function counts(){
+    document.querySelectorAll('[data-count]').forEach(function(m){
+      var el=document.getElementById(m.getAttribute('data-count')); if(!el) return;
+      var t=visibleText(el);
+      var cjk=(t.match(/[㐀-鿿]/g)||[]).length;
+      if(cjk>20){ m.textContent='約 '+t.replace(/\s/g,'').length+' 字'; }
+      else { var w=(t.match(/\S+/g)||[]).length; m.textContent=w+' words'; }
+    });
+  }
+  function copyText(t){
+    if(navigator.clipboard && window.isSecureContext){ return navigator.clipboard.writeText(t); }
+    return new Promise(function(res,rej){
+      var ta=document.createElement('textarea'); ta.value=t; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy') ? res() : rej(); }catch(e){ rej(e); } document.body.removeChild(ta);
+    });
+  }
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-target')); if(!el) return;
+      var label=b.innerHTML;
+      copyText(visibleText(el)).then(function(){
+        b.classList.add('done');
+        b.textContent = body.getAttribute('data-lang')==='en' ? 'Copied' : '已複製';
+        setTimeout(function(){ b.classList.remove('done'); b.innerHTML=label; },1600);
+      }).catch(function(){
+        b.textContent = body.getAttribute('data-lang')==='en' ? 'Select & copy' : '請手動選取';
+        setTimeout(function(){ b.innerHTML=label; },2000);
+      });
+    });
+  });
+  document.getElementById('lang-zh').addEventListener('click',function(){set('zh');apply('zh')});
+  document.getElementById('lang-en').addEventListener('click',function(){set('en');apply('en')});
+  var init=get()||'zh';
+  apply(init);
+})();
+</script>
+</body>
+</html>
