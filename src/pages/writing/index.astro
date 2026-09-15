@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import T from '../../components/T.astro';
+import Board from '../../components/Board.astro';
+import { mediumPosts, mediumProfile } from '../../data/medium.js';
+---
+<Base
+  title="文章"
+  description="朱宜振 Lman Chu 的文章。Medium 舊文維持中文原文，之後的新文章中英對照。"
+  current="/writing/"
+  path="/writing/"
+>
+  <section class="kit-intro" aria-labelledby="w-title">
+    <p class="tag-line">【 <T zh="文章" en="Writing" /> 】</p>
+    <h1 id="w-title" class="card-title"><T zh="文章" en="Writing" /></h1>
+    <p class="lead"><T zh="Medium 舊文維持中文原文；之後的新文章中英對照。" en="Earlier posts on Medium stay in Chinese. New posts will be bilingual." /></p>
+  </section>
+
+  <section class="section writing-list" aria-labelledby="w-title">
+    <Board posts={mediumPosts}>
+      <span><T zh={`這裡列的是 Medium 上最近的 ${mediumPosts.length} 篇。`} en={`The ${mediumPosts.length} most recent posts from Medium.`} /></span>
+      <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="更多舊文在 Medium" en="More on Medium" /> &gt;&gt;</a>
+    </Board>
+  </section>
+</Base>

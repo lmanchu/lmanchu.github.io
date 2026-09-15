@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import T from '../components/T.astro';
+import Timeline from '../components/Timeline.astro';
+import Contact from '../components/Contact.astro';
+import { topics, photos, alsoRoles } from '../data/site.js';
+import { bio } from '../data/bio.js';
+
+const small = [
+  { id: 'c-name', label: { zh: '姓名', en: 'Name' }, text: bio.name },
+  { id: 'c-title', label: { zh: '職稱', en: 'Title' }, text: bio.title },
+  { id: 'c-edu', label: { zh: '學歷', en: 'Education' }, text: bio.edu },
+];
+---
+<Base
+  title="講者資料"
+  description="朱宜振 Lman Chu，IrisGo.AI 共同創辦人暨營運長。講者介紹、照片與可邀請的講題，主辦單位可直接複製使用。"
+  current="/speaking/"
+  path="/speaking/"
+>
+  <section class="kit-intro" aria-labelledby="kit-title">
+    <p class="tag-line">【 <T zh="講者資料" en="Speaker kit" /> 】</p>
+    <h1 id="kit-title" class="card-title"><T zh="朱宜振" en="Lman Chu" /></h1>
+    <p class="lead"><T zh="主辦單位可以直接複製使用，不需要另外詢問。依版面選一個長度。" en="Organisers are welcome to copy these as they are. Pick the length that fits your layout." /></p>
+  </section>
+
+  <section class="section" id="copy" aria-labelledby="copy-h">
+    <div class="section-head">
+      <h2 id="copy-h" class="card-title sm"><T zh="講者介紹" en="Speaker bio" /></h2>
+    </div>
+    <div class="kit-cards">
+      <div class="kit-row3">
+        {small.map((c) => (
+          <div class="panel">
+            <div class="panel-head"><span><T zh={c.label.zh} en={c.label.en} /></span><button type="button" class="copy" data-target={c.id}><T zh="複製" en="Copy" /></button></div>
+            <div class="panel-body" id={c.id}><T zh={c.text.zh} en={c.text.en} /></div>
+          </div>
+        ))}
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><span><T zh="短版" en="Short" /><span class="meta" data-count="c-short"></span></span><button type="button" class="copy" data-target="c-short"><T zh="複製" en="Copy" /></button></div>
+        <div class="panel-body" id="c-short">
+          <p class="zh">{bio.short.zh}</p>
+          <p class="en" lang="en">{bio.short.en}</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><span><T zh="完整版" en="Full" /><span class="meta" data-count="c-full"></span></span><button type="button" class="copy" data-target="c-full"><T zh="複製" en="Copy" /></button></div>
+        <div class="panel-body" id="c-full">
+          <div class="zh">{bio.full.zh.map((p) => <p>{p}</p>)}</div>
+          <div class="en" lang="en">{bio.full.en.map((p) => <p>{p}</p>)}</div>
+        </div>
+      </div>
+
+      <div class="panel zh">
+        <div class="panel-head"><span>英文短版<span class="meta" data-count="c-short-en"></span></span><button type="button" class="copy" data-target="c-short-en">複製</button></div>
+        <div class="panel-body" id="c-short-en" lang="en"><p>{bio.short.en}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="photos" aria-labelledby="photos-h">
+    <div class="section-head">
+      <h2 id="photos-h" class="card-title sm"><T zh="照片" en="Photos" /></h2>
+      <p class="section-note"><T zh="海報與宣傳可直接使用，點「下載原圖」取得高解析度檔。" en={'Free to use for posters and promotion. "Download" gets the full-resolution file.'} /></p>
+    </div>
+    <div class="photos">
+      {photos.map((p) => (
+        <figure class="photo">
+          <div class="frame"><img src={p.web} alt={p.alt} loading="lazy" width={p.w} height={p.h} style={p.pos ? `object-position: ${p.pos}` : undefined} /></div>
+          <figcaption>
+            <span><T zh={p.label.zh} en={p.label.en} /> <span class="dim">{p.dim}</span></span>
+            <a class="term-link" href={p.full} download><T zh="下載原圖" en="Download" /></a>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" id="timeline" aria-labelledby="tl-h">
+    <div class="section-head">
+      <h2 id="tl-h" class="card-title sm"><T zh="經歷" en="Path" /></h2>
+      <p class="section-note"><T zh="從網路社群、硬體、新創育成，到 AI。" en="Internet communities, hardware, accelerators, then AI." /></p>
+    </div>
+    <Timeline withNow={false} />
+    <p class="also"><b><T zh="其他" en="Also" /></b><T zh={alsoRoles.zh} en={alsoRoles.en} /></p>
+  </section>
+
+  <section class="section" id="topics" aria-labelledby="topics-h">
+    <div class="section-head">
+      <h2 id="topics-h" class="card-title sm"><T zh="可以邀我講的題目" en="Talks I give" /></h2>
+      <p class="section-note"><T zh="可依聽眾調整長度與深度，學生、企業、創業社群都講過。" en="Length and depth adjust to the room: students, companies, founder communities." /></p>
+    </div>
+    <ul class="topics">
+      {topics.map((t) => (
+        <li><span class="t"><T zh={t.t.zh} en={t.t.en} /></span><span class="d"><T zh={t.d.zh} en={t.d.en} /></span></li>
+      ))}
+    </ul>
+  </section>
+
+  <Contact note={{ zh: '演講與合作邀約請來信，也可以透過 LinkedIn 私訊。', en: 'For talks and collaboration, email me or send a LinkedIn message.' }} />
+
+  <script is:inline>
+    (function () {
+      var body = document.body;
+      function visibleText(el) {
+        var parts = [];
+        el.querySelectorAll('p, span').forEach(function (n) {
+          if (n.offsetParent === null) return;
+          if (n.tagName === 'SPAN' && n.querySelector('span')) return;
+          if (n.tagName === 'SPAN' && n.closest('p')) return;
+          var t = n.innerText.trim(); if (t) parts.push(t);
+        });
+        if (!parts.length) { var t = el.innerText.trim(); if (t) parts.push(t); }
+        return parts.join('\n\n');
+      }
+      function counts() {
+        document.querySelectorAll('[data-count]').forEach(function (m) {
+          var el = document.getElementById(m.getAttribute('data-count')); if (!el) return;
+          var t = visibleText(el);
+          var cjk = (t.match(/[㐀-鿿]/g) || []).length;
+          if (cjk > 20) { m.textContent = '約 ' + t.replace(/\s/g, '').length + ' 字'; }
+          else { var w = (t.match(/\S+/g) || []).length; m.textContent = w + ' words'; }
+        });
+      }
+      function copyText(t) {
+        if (navigator.clipboard && window.isSecureContext) { return navigator.clipboard.writeText(t); }
+        return new Promise(function (res, rej) {
+          var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy') ? res() : rej(); } catch (e) { rej(e); } document.body.removeChild(ta);
+        });
+      }
+      document.querySelectorAll('.copy').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var el = document.getElementById(b.getAttribute('data-target')); if (!el) return;
+          var label = b.innerHTML;
+          copyText(visibleText(el)).then(function () {
+            b.classList.add('done');
+            b.textContent = body.getAttribute('data-lang') === 'en' ? 'Copied' : '已複製';
+            setTimeout(function () { b.classList.remove('done'); b.innerHTML = label; }, 1600);
+          }).catch(function () {
+            b.textContent = body.getAttribute('data-lang') === 'en' ? 'Select & copy' : '請手動選取';
+            setTimeout(function () { b.innerHTML = label; }, 2000);
+          });
+        });
+      });
+      document.addEventListener('langchange', counts);
+      counts();
+    })();
+  </script>
+</Base>

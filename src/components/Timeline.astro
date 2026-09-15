@@ -1,0 +1,55 @@
+---
+import T from './T.astro';
+import { site, timeline } from '../data/site.js';
+
+const { withNow = true } = Astro.props;
+---
+<ol class="tl">
+  {withNow && (
+    <li class="tl-item is-now">
+      <div class="tl-year" aria-hidden="true"><T zh="現在" en="Now" /></div>
+      <div class="tl-rail" aria-hidden="true"><span class="tl-node"></span><span class="tl-line"></span></div>
+      <div class="tl-body">
+        <div class="tl-head" aria-hidden="true">
+          <span class="tl-year-inline"><T zh="現在" en="Now" /></span>
+          <span class="tl-kind">[<T zh="現在" en="NOW" />]</span>
+        </div>
+        <h3 class="tl-title"><T zh="目前在做" en="What I'm doing now" /></h3>
+        <ul class="now-list">
+          {site.now.map((n) => <li><span><T zh={n.zh} en={n.en} /></span></li>)}
+        </ul>
+      </div>
+    </li>
+  )}
+  {timeline.map((e) => (
+    <li class="tl-item">
+      <div class="tl-year" aria-hidden="true">{e.year}</div>
+      <div class="tl-rail" aria-hidden="true"><span class="tl-node"></span><span class="tl-line"></span></div>
+      <div class="tl-body">
+        <div class="tl-head" aria-hidden="true">
+          <span class="tl-year-inline">{e.year}</span>
+          <span class="tl-kind">[{e.kind === 'origin' ? <T zh="起點" en="ORIGIN" /> : <T zh="經歷" en="PATH" />}]</span>
+        </div>
+        {e.kind === 'origin' ? (
+          <div class="crt">
+            <div class="crt-screen">
+              <div class="crt-top" aria-hidden="true"><span>【 <T zh="成大 CCNS" en="NCKU CCNS" /> 】</span><span class="yr">{e.year}</span></div>
+              <div class="crt-text">
+                <h3><span class="sr-only">{e.year} </span><T zh={e.title.zh} en={e.title.en} /></h3>
+                <p class="zh crt-lines">{e.lines.zh.map((line) => <span>{line}</span>)}</p>
+                <p class="en crt-lines" lang="en">{e.lines.en.map((line) => <span>{line}</span>)}</p>
+                <span class="crt-prompt" aria-hidden="true">&gt; <span class="cursor">_</span></span>
+              </div>
+              <div class="crt-status" aria-hidden="true"><span>【注音】</span><span>倚天中文</span></div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <h3 class="tl-title"><span class="sr-only">{e.year} </span><T zh={e.title.zh} en={e.title.en} /></h3>
+            <p class="tl-desc"><T zh={e.desc.zh} en={e.desc.en} /></p>
+          </>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>

@@ -1,0 +1,23 @@
+---
+import T from './T.astro';
+import { buildRuler } from '../lib/ruler.js';
+import { timeline } from '../data/site.js';
+
+const end = new Date().getFullYear();
+const ticks = timeline.map((t) => Number(t.year));
+const start = Math.min(...ticks);
+const desktop = buildRuler({ start, end, ticks, scale: 2 });
+const mobile = buildRuler({ start, end, ticks, scale: 1, labels: 'ends' });
+---
+<section class="ruler" aria-labelledby="ruler-h">
+  <div class="ruler-head">
+    <h2 id="ruler-h">【 <T zh="年表總覽" en="Overview" /> 】</h2>
+    <p>
+      <span class="only-desktop"><T zh="每一格是半年，+ 是重要經歷，O 是現在" en="Each cell is half a year, + marks a milestone, O is now" /></span>
+      <span class="only-mobile"><T zh="每一格是一年，+ 是重要經歷，O 是現在" en="Each cell is a year, + marks a milestone, O is now" /></span>
+    </p>
+  </div>
+  <p class="sr-only"><T zh={`${start} 年到 ${end} 年的重要經歷，詳見下方年表。`} en={`Milestones from ${start} to ${end}, listed in the timeline below.`} /></p>
+  <pre class="ruler-art only-desktop" aria-hidden="true"><span class="lbl">{desktop.above}</span>{'\n'}{desktop.line}<span class="now">O</span>{'\n'}<span class="lbl">{desktop.below}</span></pre>
+  <pre class="ruler-art only-mobile" aria-hidden="true"><span class="lbl">{mobile.above}</span>{'\n'}{mobile.line}<span class="now">O</span></pre>
+</section>

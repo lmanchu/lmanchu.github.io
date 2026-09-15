@@ -1,0 +1,25 @@
+---
+import T from './T.astro';
+
+const { current = '/' } = Astro.props;
+const links = [
+  { href: '/#timeline', key: 'timeline', zh: '年表', en: 'Timeline' },
+  { href: '/writing/', key: '/writing/', zh: '文章', en: 'Writing' },
+  { href: '/speaking/', key: '/speaking/', zh: '講者資料', en: 'Speaker kit' },
+  { href: '/#contact', key: 'contact', zh: '聯絡', en: 'Contact' },
+];
+---
+<header class="bbs-bar">
+  <div class="wrap bbs-inner">
+    <a class="bbs-home" href="/">【 <T zh="朱宜振" en="Lman Chu" /><span class="only-desktop"> <T zh="Lman Chu" en="朱宜振" /></span> 】</a>
+    <nav class="bbs-nav" aria-label="Main">
+      {links.map((l) => (
+        <a href={l.href} aria-current={current === l.key ? 'page' : undefined}><T zh={l.zh} en={l.en} /></a>
+      ))}
+    </nav>
+    <div class="tog" role="group" aria-label="Language">
+      <button type="button" id="lang-zh" aria-pressed="true">中文</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
