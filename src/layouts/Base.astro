@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import StatusBar from '../components/StatusBar.astro';
+import T from '../components/T.astro';
+import { site } from '../data/site.js';
+
+const { title, description, ogTitle, current = '/', path = '/' } = Astro.props;
+const pageTitle = title ? `${title}｜朱宜振 Lman Chu` : '朱宜振 Lman Chu';
+const canonical = new URL(path, site.url).href;
+const ogImage = new URL('/photos/lman-hero-web.jpg', site.url).href;
+const year = new Date().getFullYear();
+const updated = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Taipei' });
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={ogTitle ?? pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="theme-color" content="#0A0A0B" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=VT323&display=swap" />
+  </head>
+  <body>
+    <a class="skip" href="#main"><T zh="跳到內容" en="Skip to content" /></a>
+    <StatusBar current={current} />
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+    <footer class="wrap">
+      <div class="site-footer">
+        <span><T zh="最後更新" en="Updated" /> {updated}</span>
+        <span>1994 telnet → {year} Agentic AI</span>
+      </div>
+    </footer>
+    <script is:inline>
+      (function () {
+        var body = document.body, KEY = 'lmanchu-lang';
+        function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+        function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+        function apply(l) {
+          if (l === 'en') { body.setAttribute('data-lang', 'en'); document.documentElement.lang = 'en'; }
+          else { body.removeAttribute('data-lang'); document.documentElement.lang = 'zh-Hant'; }
+          document.getElementById('lang-zh').setAttribute('aria-pressed', l !== 'en');
+          document.getElementById('lang-en').setAttribute('aria-pressed', l === 'en');
+          document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
+        }
+        document.getElementById('lang-zh').addEventListener('click', function () { set('zh'); apply('zh'); });
+        document.getElementById('lang-en').addEventListener('click', function () { set('en'); apply('en'); });
+        apply(get() || 'zh');
+      })();
+    </script>
+  </body>
+</html>

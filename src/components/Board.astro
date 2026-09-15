@@ -1,0 +1,41 @@
+---
+import T from './T.astro';
+
+// 文章列表做成 BBS 看板。posts: [{ date: 'YYYY-MM-DD', title, url }]，目前都是 Medium 中文舊文。
+const { posts, limit } = Astro.props;
+const list = limit ? posts.slice(0, limit) : posts;
+const groups = [];
+for (const p of list) {
+  const year = p.date.slice(0, 4);
+  let g = groups.find((x) => x.year === year);
+  if (!g) groups.push((g = { year, items: [] }));
+  g.items.push(p);
+}
+const md = (d) => d.slice(5).replace('-', '/');
+---
+<div class="board">
+  <div class="board-head" aria-hidden="true">
+    <span class="col-cur"></span>
+    <span><T zh="日期" en="Date" /></span>
+    <span><T zh="語言" en="Lang" /></span>
+    <span><T zh="標題" en="Title" /></span>
+  </div>
+  {groups.map((g) => (
+    <>
+      <div class="board-sep">── {g.year} ‧ <T zh="Medium 舊文" en="From Medium" /> ──</div>
+      <ul class="board-list">
+        {g.items.map((p) => (
+          <li>
+            <a class="board-row" href={p.url} rel="noopener">
+              <span class="cur" aria-hidden="true">&gt;</span>
+              <span class="d">{md(p.date)}</span>
+              <span class="l"><T zh="中文" en="ZH" /></span>
+              <span class="t" lang="zh-Hant">{p.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  ))}
+  <div class="board-foot"><slot /></div>
+</div>

@@ -1,0 +1,20 @@
+---
+import T from './T.astro';
+import { site } from '../data/site.js';
+
+const { note } = Astro.props;
+---
+<section class="section contact" id="contact" aria-labelledby="contact-h">
+  <div class="contact-main">
+    <h2 id="contact-h" class="card-title"><T zh="聯絡" en="Contact" /></h2>
+    {note && <p class="lead"><T zh={note.zh} en={note.en} /></p>}
+  </div>
+  <dl class="contact-list">
+    {site.contacts.map((c) => (
+      <div>
+        <dt>{c.label}</dt>
+        <dd><a href={c.href} rel={c.rel}>{c.text}</a></dd>
+      </div>
+    ))}
+  </dl>
+</section>

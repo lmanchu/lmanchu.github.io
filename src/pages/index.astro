@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import T from '../components/T.astro';
+import YearRuler from '../components/YearRuler.astro';
+import Timeline from '../components/Timeline.astro';
+import Board from '../components/Board.astro';
+import Contact from '../components/Contact.astro';
+import { site, topics, timeline } from '../data/site.js';
+import { mediumPosts, mediumProfile } from '../data/medium.js';
+
+const cn = (n) => String(n).replace(/\d/g, (d) => '〇一二三四五六七八九'[d]);
+const firstYear = Math.min(...timeline.map((t) => Number(t.year)));
+const vertical = `${cn(firstYear)}至${cn(new Date().getFullYear())}`;
+const description = `${site.name.zh} ${site.name.en}，${site.title.zh}。${site.tagline.zh}`;
+---
+<Base description={description} ogTitle={`朱宜振 Lman Chu｜${site.title.zh}`} current="/" path="/">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-main">
+      <p class="hero-eyebrow">
+        <span class="who"><T zh="朱宜振 LMAN CHU" en="LMAN CHU 朱宜振" /></span>
+        <span class="dash" aria-hidden="true"></span>
+        <span><T zh={site.title.zh} en={site.title.en} /></span>
+      </p>
+      <h1 class="hero-title" id="hero-title">
+        <span class="zh">{site.heroTitle.zh.map((line) => <span class="line">{line}</span>)}</span>
+        <span class="en" lang="en">{site.heroTitle.en.map((line) => <span class="line">{line}</span>)}</span>
+      </h1>
+      <p class="hero-sub"><T zh={site.heroSub.zh} en={site.heroSub.en} /></p>
+    </div>
+    <div class="hero-vert" aria-hidden="true"><span>{vertical}</span></div>
+  </section>
+
+  <YearRuler />
+
+  <section class="section" id="timeline" aria-labelledby="timeline-h">
+    <div class="section-head">
+      <h2 id="timeline-h" class="card-title"><T zh="年表" en="Timeline" /></h2>
+      <p class="section-note"><T zh="最新的在最上面，往下捲就是往回翻。" en="Newest first. Scroll down to go back in time." /></p>
+    </div>
+    <Timeline />
+  </section>
+
+  <section class="section" id="writing" aria-labelledby="writing-h">
+    <div class="section-head">
+      <h2 id="writing-h" class="card-title"><T zh="文章" en="Writing" /></h2>
+      <p class="section-note"><T zh="Medium 舊文維持中文原文；之後的新文章中英對照。" en="Earlier posts on Medium stay in Chinese. New posts will be bilingual." /></p>
+    </div>
+    <Board posts={mediumPosts} limit={6}>
+      <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="更多舊文在 Medium" en="More on Medium" /> &gt;&gt;</a>
+      <a class="term-link" href="/writing/"><T zh="全部文章" en="All writing" /> &gt;&gt;</a>
+    </Board>
+  </section>
+
+  <section class="section teaser" aria-labelledby="kit-h">
+    <div class="teaser-main">
+      <h2 id="kit-h" class="card-title"><T zh="講者資料" en="Speaker kit" /></h2>
+      <p class="lead"><T zh="主辦單位要的介紹、照片與講題都在這一頁，可以直接複製使用。" en="Bios, photos and talk topics for organisers, ready to copy." /></p>
+      <div class="teaser-photo">
+        <img src="/photos/lman-stage-web.jpg" alt="朱宜振在 AI 創新交流會台上分享" width="960" height="640" loading="lazy" />
+      </div>
+    </div>
+    <div class="teaser-side">
+      <p class="tag-line">[<T zh="可以邀我講的題目" en="Talks I give" />]</p>
+      <ul class="topics">
+        {topics.map((t) => (
+          <li><span class="t"><T zh={t.t.zh} en={t.t.en} /></span><span class="d"><T zh={t.d.zh} en={t.d.en} /></span></li>
+        ))}
+      </ul>
+      <p class="more"><a class="term-link" href="/speaking/"><T zh="前往講者資料" en="Open the speaker kit" /> &gt;&gt;</a></p>
+    </div>
+  </section>
+
+  <Contact note={{ zh: '演講與合作邀約請來信，也可以透過 LinkedIn 私訊。', en: 'For talks and collaboration, email me or send a LinkedIn message.' }} />
+</Base>

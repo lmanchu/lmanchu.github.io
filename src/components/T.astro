@@ -1,0 +1,5 @@
+---
+// 中英雙語片段：兩種語言都輸出，由 body[data-lang] 切換顯示。
+const { zh, en } = Astro.props;
+---
+<span class="zh">{zh}</span><span class="en" lang="en">{en}</span>
