@@ -4,11 +4,12 @@ import StatusBar from '../components/StatusBar.astro';
 import T from '../components/T.astro';
 import { site } from '../data/site.js';
 
-const { title, description, current = '/', path = '/' } = Astro.props;
+const { title, description, ogTitle, current = '/', path = '/' } = Astro.props;
 const pageTitle = title ? `${title}｜朱宜振 Lman Chu` : '朱宜振 Lman Chu';
 const canonical = new URL(path, site.url).href;
 const ogImage = new URL('/photos/lman-hero-web.jpg', site.url).href;
 const year = new Date().getFullYear();
+const updated = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Taipei' });
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -18,7 +19,7 @@ const year = new Date().getFullYear();
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:title" content={pageTitle} />
+    <meta property="og:title" content={ogTitle ?? pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content={canonical} />
@@ -36,7 +37,7 @@ const year = new Date().getFullYear();
     </main>
     <footer class="wrap">
       <div class="site-footer">
-        <span><T zh="朱宜振 Lman Chu" en="Lman Chu 朱宜振" /></span>
+        <span><T zh="最後更新" en="Updated" /> {updated}</span>
         <span>1994 telnet → {year} Agentic AI</span>
       </div>
     </footer>

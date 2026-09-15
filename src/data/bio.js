@@ -1,8 +1,9 @@
-// 講者介紹文字：逐字沿用 2026-09-14 上線、已核對的講者頁。改內容先改 claims SSoT。
+// 講者介紹文字：逐字沿用 2026-09-14 上線、已核對的講者頁。改內容前先確認原始資料。
 export const bio = {
   name: { zh: '朱宜振 Lman Chu', en: 'Lman Chu (朱宜振)' },
   title: { zh: 'IrisGo.AI 共同創辦人暨營運長', en: 'Co-founder & COO, IrisGo.AI' },
   edu: { zh: '成功大學化學 86、EMBA 95', en: 'Chemistry and EMBA, National Cheng Kung University' },
+  focus: { zh: 'AI PC、Agentic AI、新創營運、硬體通路合作', en: 'AI PC, agentic AI, startup operations, hardware partnerships' },
   short: {
     zh: '朱宜振 Lman Chu，IrisGo.AI 共同創辦人暨營運長。1994 年在成大創辦電腦網路愛好社 CCNS，之後在硬體產業擔任產品經理十五年，陸續共同創辦 BiiLabs 與 Tallgeese AI。2024 年共同創辦 IrisGo，打造讓電腦替人工作的 AI PC 系統層，種子輪由吳恩達的 AI Fund 領投。',
     en: "Lman Chu is Co-founder and COO of IrisGo.AI. In 1994 he founded the Computer Network Club (CCNS) at National Cheng Kung University, then spent fifteen years as a hardware product manager before co-founding BiiLabs and Tallgeese AI. In 2024 he co-founded IrisGo, which builds the system layer of the AI PC. Its seed round was led by Andrew Ng's AI Fund.",

@@ -19,9 +19,19 @@ const small = [
   path="/speaking/"
 >
   <section class="kit-intro" aria-labelledby="kit-title">
-    <p class="tag-line">【 <T zh="講者資料" en="Speaker kit" /> 】</p>
-    <h1 id="kit-title" class="card-title"><T zh="朱宜振" en="Lman Chu" /></h1>
-    <p class="lead"><T zh="主辦單位可以直接複製使用，不需要另外詢問。依版面選一個長度。" en="Organisers are welcome to copy these as they are. Pick the length that fits your layout." /></p>
+    <div class="kit-hero">
+      <div class="kit-hero-main">
+        <p class="tag-line">【 <T zh="講者資料" en="Speaker kit" /> 】</p>
+        <h1 id="kit-title" class="card-title"><T zh="朱宜振" en="Lman Chu" /></h1>
+        <p class="lead"><T zh="主辦單位可以直接複製使用，不需要另外詢問。依版面選一個長度。" en="Organisers are welcome to copy these as they are. Pick the length that fits your layout." /></p>
+        <dl class="kit-facts">
+          <dt><T zh="現職" en="Now" /></dt><dd><T zh={bio.title.zh} en={bio.title.en} /></dd>
+          <dt><T zh="學歷" en="Education" /></dt><dd><T zh={bio.edu.zh} en={bio.edu.en} /></dd>
+          <dt><T zh="專長" en="Focus" /></dt><dd><T zh={bio.focus.zh} en={bio.focus.en} /></dd>
+        </dl>
+      </div>
+      <figure class="kit-portrait"><img src="/photos/lman-hero-web.jpg" alt="朱宜振 Lman Chu 在 AI 創新交流會分享" width="800" height="1000" /></figure>
+    </div>
   </section>
 
   <section class="section" id="copy" aria-labelledby="copy-h">

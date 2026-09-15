@@ -1,5 +1,4 @@
-// 全站共用的身分資料。生平以 PKM-Vault/.ai-butler-system/lman-principal-claims/identity.md 為準，
-// 講者介紹等文字沿用 2026-09-14 上線的講者頁（已核對）。
+// 全站共用的身分資料。講者介紹等文字沿用 2026-09-14 上線、已核對過的講者頁；改生平前先確認原始資料。
 export const site = {
   url: 'https://lmanchu.github.io',
   name: { zh: '朱宜振', en: 'Lman Chu' },

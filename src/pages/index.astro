@@ -13,7 +13,7 @@ const firstYear = Math.min(...timeline.map((t) => Number(t.year)));
 const vertical = `${cn(firstYear)}至${cn(new Date().getFullYear())}`;
 const description = `${site.name.zh} ${site.name.en}，${site.title.zh}。${site.tagline.zh}`;
 ---
-<Base description={description} current="/" path="/">
+<Base description={description} ogTitle={`朱宜振 Lman Chu｜${site.title.zh}`} current="/" path="/">
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-main">
       <p class="hero-eyebrow">
@@ -70,5 +70,5 @@ const description = `${site.name.zh} ${site.name.en}，${site.title.zh}。${site
     </div>
   </section>
 
-  <Contact />
+  <Contact note={{ zh: '演講與合作邀約請來信，也可以透過 LinkedIn 私訊。', en: 'For talks and collaboration, email me or send a LinkedIn message.' }} />
 </Base>

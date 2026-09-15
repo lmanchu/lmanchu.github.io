@@ -12,5 +12,5 @@ npm run dev      # http://localhost:4321
 npm run build    # 輸出到 dist/
 ```
 
-- 內容在 `src/data/`：`site.js`（身分、年表、講題、照片）、`bio.js`（講者介紹）、`medium.js`（Medium 舊文列表）。生平以 PKM-Vault 的 claims SSoT 為準。
+- 內容在 `src/data/`：`site.js`（身分、年表、講題、照片）、`bio.js`（講者介紹）、`medium.js`（Medium 舊文列表）。改生平前先確認原始資料。
 - 推上 `main` 由 GitHub Actions（`.github/workflows/deploy.yml`）建置並部署到 GitHub Pages。

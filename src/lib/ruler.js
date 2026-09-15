@@ -18,7 +18,7 @@ export function buildRuler({ start, end, ticks, scale, labels = 'ticks' }) {
   };
   const put = (row, text, at) => [...text].forEach((ch, k) => { row[at + k] = ch; });
 
-  const years = labels === 'ends' ? [start, end] : [...ticks.filter((y) => y > start), start, end].sort((a, b) => a - b);
+  const years = labels === 'ends' ? [start, end] : [...new Set([start, ...ticks, end])].sort((a, b) => a - b);
   for (const y of years) {
     const text = String(y);
     const pos = (y - start) * scale;

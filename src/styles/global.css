@@ -168,6 +168,13 @@ a.board-row:hover .cur, a.board-row:focus-visible .cur { visibility: visible; }
 
 /* ── 講者資料頁 ─────────────────────────────── */
 .kit-intro { padding-block: 72px 48px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 20px; }
+.kit-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: 48px; align-items: end; }
+.kit-hero-main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.kit-facts { margin: 8px 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 20px; font-size: 16px; }
+.kit-facts dt { font-family: var(--term); font-size: 17px; line-height: 1.6; color: var(--ansi-yellow); font-size-adjust: cap-height 0.733; }
+.kit-facts dd { margin: 0; }
+.kit-portrait { margin: 0; justify-self: end; width: 100%; max-width: 340px; border: 1px solid var(--panel-line); padding: 8px; background: var(--panel); }
+.kit-portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 .kit-cards { display: grid; gap: 16px; }
 .kit-row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .panel { border: 1px solid var(--panel-line); background: var(--panel); min-width: 0; }
@@ -248,6 +255,8 @@ a.board-row:hover .cur, a.board-row:focus-visible .cur { visibility: visible; }
   .contact-list { font-size: 19px; }
   .contact-list div { grid-template-columns: 120px minmax(0, 1fr); }
   .kit-row3, .photos { grid-template-columns: minmax(0, 1fr); }
+  .kit-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .kit-portrait { justify-self: start; max-width: 280px; }
   .photo .frame { aspect-ratio: 3 / 2; }
   .panel-head { font-size: 16px; }
   .copy { font-size: 16px; min-width: 76px; }
