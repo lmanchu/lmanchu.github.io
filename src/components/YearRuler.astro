@@ -8,6 +8,8 @@ const ticks = timeline.map((t) => Number(t.year));
 const start = Math.min(...ticks);
 const desktop = buildRuler({ start, end, ticks, scale: 2 });
 const mobile = buildRuler({ start, end, ticks, scale: 1, labels: 'ends' });
+// 最長一行的字元數（line 後面還有一個 O），CSS 用它把字級縮到剛好放得下
+const cols = (r) => Math.max(r.above.length, r.line.length + 1, r.below.length);
 ---
 <section class="ruler" aria-labelledby="ruler-h">
   <div class="ruler-head">
@@ -18,6 +20,6 @@ const mobile = buildRuler({ start, end, ticks, scale: 1, labels: 'ends' });
     </p>
   </div>
   <p class="sr-only"><T zh={`${start} 年到 ${end} 年的重要經歷，詳見下方年表。`} en={`Milestones from ${start} to ${end}, listed in the timeline below.`} /></p>
-  <pre class="ruler-art only-desktop" aria-hidden="true"><span class="lbl">{desktop.above}</span>{'\n'}{desktop.line}<span class="now">O</span>{'\n'}<span class="lbl">{desktop.below}</span></pre>
-  <pre class="ruler-art only-mobile" aria-hidden="true"><span class="lbl">{mobile.above}</span>{'\n'}{mobile.line}<span class="now">O</span></pre>
+  <pre class="ruler-art only-desktop" style={`--cols: ${cols(desktop)}`} aria-hidden="true"><span class="lbl">{desktop.above}</span>{'\n'}{desktop.line}<span class="now">O</span>{'\n'}<span class="lbl">{desktop.below}</span></pre>
+  <pre class="ruler-art only-mobile" style={`--cols: ${cols(mobile)}`} aria-hidden="true"><span class="lbl">{mobile.above}</span>{'\n'}{mobile.line}<span class="now">O</span></pre>
 </section>

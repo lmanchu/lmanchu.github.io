@@ -79,11 +79,12 @@ body[data-lang="en"] .hero-title { font-size: clamp(40px, 6.2vw, 88px); line-hei
 .hero-vert span { writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900; font-size: 36px; letter-spacing: 0.18em; line-height: 1; }
 
 /* ── ASCII 年份尺 ───────────────────────────── */
-.ruler { padding-block: 48px 56px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 18px; }
+.ruler { padding-block: 48px 56px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 18px; container-type: inline-size; }
 .ruler-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 24px; font-family: var(--term); font-size: 18px; line-height: 1.2; color: var(--faint); }
 .ruler-head h2 { margin: 0; font: inherit; color: var(--ansi-yellow); }
 .ruler-head p { margin: 0; }
-.ruler-art { margin: 0; font-family: "VT323", ui-monospace, monospace; font-size: 28px; line-height: 1.25; white-space: pre; overflow-x: auto; overflow-y: hidden; color: var(--ink); }
+/* VT323 一個字寬約 0.52em；取 0.54 留餘裕，窄於 --cols 個字就把字級縮小 */
+.ruler-art { margin: 0; font-family: "VT323", ui-monospace, monospace; font-size: 28px; font-size: min(28px, calc(100cqi / (var(--cols, 66) * 0.54))); line-height: 1.25; white-space: pre; overflow-x: auto; overflow-y: hidden; color: var(--ink); }
 .ruler-art .lbl { color: var(--soft); }
 .ruler-art .now { color: var(--signal); }
 
@@ -222,7 +223,7 @@ a.board-row:hover .cur, a.board-row:focus-visible .cur { visibility: visible; }
   .hero-eyebrow .dash { display: none; }
   .ruler { padding-block: 32px 36px; }
   .ruler-head { font-size: 16px; }
-  .ruler-art { font-size: 19px; }
+  .ruler-art { font-size: 19px; font-size: min(19px, calc(100cqi / (var(--cols, 33) * 0.54))); }
   .section { padding-block: 48px; }
   .section-head { margin-bottom: 24px; }
   .section-note, .tag-line, .term-link { font-size: 16px; }
