@@ -66,6 +66,15 @@ export const timeline = [
     desc: { zh: '投入科技新創育成。', en: 'A tech startup accelerator.' },
   },
   {
+    year: '2008',
+    kind: 'milestone',
+    title: { zh: '加入 LILEE Systems 創始團隊', en: 'Joined the founding team of LILEE Systems' },
+    desc: {
+      zh: '建立超過 50 人的跨領域團隊，就此跨入創新創業。',
+      en: 'Built a cross-functional team of more than 50 people. This is when I moved into startups.',
+    },
+  },
+  {
     year: '2004',
     kind: 'milestone',
     title: { zh: '硬體產品經理十五年以上', en: 'Fifteen-plus years in hardware product management' },
