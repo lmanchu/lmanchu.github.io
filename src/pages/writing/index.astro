@@ -3,6 +3,9 @@ import Base from '../../layouts/Base.astro';
 import T from '../../components/T.astro';
 import Board from '../../components/Board.astro';
 import { mediumPosts, mediumProfile } from '../../data/medium.js';
+
+const years = [...new Set(mediumPosts.map((p) => p.date.slice(0, 4)))];
+const count = (y) => mediumPosts.filter((p) => p.date.startsWith(y)).length;
 ---
 <Base
   title="文章"
@@ -17,9 +20,12 @@ import { mediumPosts, mediumProfile } from '../../data/medium.js';
   </section>
 
   <section class="section writing-list" aria-labelledby="w-title">
-    <Board posts={mediumPosts}>
-      <span><T zh={`這裡列的是 Medium 上最近的 ${mediumPosts.length} 篇。`} en={`The ${mediumPosts.length} most recent posts from Medium.`} /></span>
-      <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="更多舊文在 Medium" en="More on Medium" /> &gt;&gt;</a>
+    <nav class="year-index" aria-label="年份">
+      {years.map((y) => <a class="term-link" href={`#y${y}`}>{y}<span class="n">({count(y)})</span></a>)}
+    </nav>
+    <Board posts={mediumPosts} anchors>
+      <span><T zh={`Medium 上的 ${mediumPosts.length} 篇，點標題會開原文；標「會員」的要 Medium 會員才看得完。`} en={`${mediumPosts.length} posts on Medium. Titles open the original; the ones marked Members need a Medium membership.`} /></span>
+      <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="Medium 個人頁" en="Medium profile" /> &gt;&gt;</a>
     </Board>
   </section>
 </Base>
