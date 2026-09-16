@@ -3,9 +3,17 @@ import Base from '../../layouts/Base.astro';
 import T from '../../components/T.astro';
 import Board from '../../components/Board.astro';
 import { mediumPosts, mediumProfile } from '../../data/medium.js';
+import { localPosts } from '../../data/writing.js';
 
-const years = [...new Set(mediumPosts.map((p) => p.date.slice(0, 4)))];
-const count = (y) => mediumPosts.filter((p) => p.date.startsWith(y)).length;
+const formattedLocalPosts = localPosts.map((p) => ({
+  ...p,
+  url: `/writing/${p.id}/`
+}));
+
+const allPosts = [...formattedLocalPosts, ...mediumPosts].sort((a, b) => b.date.localeCompare(a.date));
+
+const years = [...new Set(allPosts.map((p) => p.date.slice(0, 4)))];
+const count = (y) => allPosts.filter((p) => p.date.startsWith(y)).length;
 ---
 <Base
   title="文章"
@@ -23,8 +31,8 @@ const count = (y) => mediumPosts.filter((p) => p.date.startsWith(y)).length;
     <nav class="year-index" aria-label="年份">
       {years.map((y) => <a class="term-link" href={`#y${y}`}>{y}<span class="n">({count(y)})</span></a>)}
     </nav>
-    <Board posts={mediumPosts} anchors>
-      <span><T zh={`Medium 上的 ${mediumPosts.length} 篇，點標題會開原文；標「會員」的要 Medium 會員才看得完。`} en={`${mediumPosts.length} posts on Medium. Titles open the original; the ones marked Members need a Medium membership.`} /></span>
+    <Board posts={allPosts} anchors>
+      <span><T zh={`自建與 Medium 上的共 ${allPosts.length} 篇，點標題可閱讀全文。`} en={`${allPosts.length} posts on this site and Medium. Titles open the full text.`} /></span>
       <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="Medium 個人頁" en="Medium profile" /> &gt;&gt;</a>
     </Board>
   </section>

@@ -2,7 +2,7 @@
 import T from './T.astro';
 
 // 文章列表做成 BBS 看板。posts: [{ date: 'YYYY-MM-DD', title, url, lang?, locked? }]，
-// 目前都是 Medium 文章（lang 省略＝中文，locked＝需要 Medium 會員）。
+// 目前有 Medium 文章與站內文章（lang 為 en/zh/bilingual，locked＝需要 Medium 會員）。
 // anchors：年份分隔線加上 id（y2023…），給文章頁的年份索引跳轉
 const { posts, limit, anchors = false } = Astro.props;
 const list = limit ? posts.slice(0, limit) : posts;
@@ -24,15 +24,36 @@ const md = (d) => d.slice(5).replace('-', '/');
   </div>
   {groups.map((g) => (
     <>
-      <div class="board-sep" id={anchors ? `y${g.year}` : undefined}>── {g.year} ‧ <T zh="Medium 舊文" en="From Medium" /> ──</div>
+      <div class="board-sep" id={anchors ? `y${g.year}` : undefined}>
+        {g.items.some((p) => !p.url.startsWith('http')) ? (
+          `── ${g.year} ──`
+        ) : (
+          <>── {g.year} ‧ <T zh="Medium 舊文" en="From Medium" /> ──</>
+        )}
+      </div>
       <ul class="board-list">
         {g.items.map((p) => (
           <li>
-            <a class="board-row" href={p.url} rel="noopener">
+            <a class="board-row" href={p.url} rel={p.url.startsWith('http') ? "noopener" : undefined}>
               <span class="cur" aria-hidden="true">&gt;</span>
               <span class="d">{md(p.date)}</span>
-              <span class="l">{p.lang === 'en' ? <T zh="英文" en="EN" /> : <T zh="中文" en="ZH" />}</span>
-              <span class="t" lang={p.lang === 'en' ? 'en' : 'zh-Hant'}>{p.title}{p.locked && <span class="tag"><T zh="會員" en="Members" /></span>}</span>
+              <span class="l">
+                {p.lang === 'en' ? (
+                  <T zh="英文" en="EN" />
+                ) : p.lang === 'bilingual' ? (
+                  <T zh="雙語" en="ZH/EN" />
+                ) : (
+                  <T zh="中文" en="ZH" />
+                )}
+              </span>
+              <span class="t" lang={p.lang === 'en' ? 'en' : 'zh-Hant'}>
+                {typeof p.title === 'object' ? (
+                  <T zh={p.title.zh} en={p.title.en} />
+                ) : (
+                  p.title
+                )}
+                {p.locked && <span class="tag"><T zh="會員" en="Members" /></span>}
+              </span>
             </a>
           </li>
         ))}

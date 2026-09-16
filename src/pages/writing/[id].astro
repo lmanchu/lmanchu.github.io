@@ -1,0 +1,141 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import T from '../../components/T.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateStr = post.data.date;
+const formattedDate = dateStr.replace(/-/g, '/');
+
+// Build localized metadata
+const description = post.data.description;
+const titleZh = post.data.title;
+const titleEn = post.data.title_en;
+---
+<Base
+  title={titleZh}
+  description={description}
+  current="/writing/"
+  path={`/writing/${post.id}/`}
+>
+  <article class="post-article">
+    <div class="bbs-header" aria-hidden="true">
+      <div class="bbs-line">
+        <span class="lbl"><T zh="作者" en="Author" /></span>
+        <span class="val">Lman Chu (<T zh="朱宜振" en="Lman Chu" />)</span>
+        <span class="lbl"><T zh="看板" en="Board" /></span>
+        <span class="val">Writing</span>
+      </div>
+      <div class="bbs-line">
+        <span class="lbl"><T zh="標題" en="Title" /></span>
+        <span class="val" lang={post.data.lang === 'en' ? 'en' : 'zh-Hant'}><T zh={titleZh} en={titleEn} /></span>
+      </div>
+      <div class="bbs-line">
+        <span class="lbl"><T zh="時間" en="Time" /></span>
+        <span class="val">{formattedDate}</span>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <Content />
+    </div>
+
+    <div class="post-footer">
+      <hr class="bbs-hr" />
+      <div class="post-nav-back">
+        <a class="term-link" href="/writing/">&lt;&lt; <T zh="返回文章列表" en="Back to articles" /></a>
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style is:global>
+  /* Scoped styling for BBS-style article layout */
+  .post-article {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .bbs-header {
+    background: #111215;
+    border: 1px dashed var(--rule, #333);
+    padding: 0.75rem 1rem;
+    margin-bottom: 2rem;
+    font-family: monospace, var(--font-mono, "VT323");
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ansi-bright-blue, #5c6370);
+  }
+  
+  .bbs-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+  
+  .bbs-line:last-child {
+    margin-bottom: 0;
+  }
+  
+  .bbs-header .lbl {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 0.1rem 0.5rem;
+    margin-right: 0.75rem;
+    border-radius: 2px;
+    font-weight: bold;
+    min-width: 3.5rem;
+    text-align: center;
+  }
+  
+  .bbs-header .val {
+    color: var(--ansi-yellow, #e5c07b);
+    margin-right: 2rem;
+    font-weight: 500;
+  }
+  
+  .post-content {
+    font-family: var(--font-sans, "Noto Sans TC"), sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.9;
+    max-width: 38em;
+    margin: 0 auto;
+    color: var(--foreground, #e0e6ed);
+    text-align: justify;
+    letter-spacing: 0.01em;
+  }
+
+  /* Specific style overrides for data-lang toggle */
+  body[data-lang="en"] .post-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    letter-spacing: normal;
+  }
+  
+  .post-content p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .bbs-hr {
+    border: none;
+    border-top: 1px dashed var(--rule, #333);
+    margin: 2.5rem 0 1.5rem 0;
+  }
+  
+  .post-nav-back {
+    text-align: left;
+    font-size: 1rem;
+  }
+</style>

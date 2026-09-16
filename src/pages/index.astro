@@ -7,11 +7,19 @@ import Board from '../components/Board.astro';
 import Contact from '../components/Contact.astro';
 import { site, topics, timeline } from '../data/site.js';
 import { mediumPosts, mediumProfile } from '../data/medium.js';
+import { localPosts } from '../data/writing.js';
 
 const cn = (n) => String(n).replace(/\d/g, (d) => '〇一二三四五六七八九'[d]);
 const firstYear = Math.min(...timeline.map((t) => Number(t.year)));
 const vertical = `${cn(firstYear)}至${cn(new Date().getFullYear())}`;
 const description = `${site.name.zh} ${site.name.en}，${site.title.zh}。${site.tagline.zh}`;
+
+const formattedLocalPosts = localPosts.map((p) => ({
+  ...p,
+  url: `/writing/${p.id}/`
+}));
+
+const allPosts = [...formattedLocalPosts, ...mediumPosts].sort((a, b) => b.date.localeCompare(a.date));
 ---
 <Base description={description} ogTitle={`朱宜振 Lman Chu｜${site.title.zh}`} current="/" path="/">
   <section class="hero" aria-labelledby="hero-title">
@@ -45,7 +53,7 @@ const description = `${site.name.zh} ${site.name.en}，${site.title.zh}。${site
       <h2 id="writing-h" class="card-title"><T zh="文章" en="Writing" /></h2>
       <p class="section-note"><T zh="Medium 舊文維持中文原文；之後的新文章中英對照。" en="Earlier posts on Medium stay in Chinese. New posts will be bilingual." /></p>
     </div>
-    <Board posts={mediumPosts} limit={6}>
+    <Board posts={allPosts} limit={6}>
       <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="更多舊文在 Medium" en="More on Medium" /> &gt;&gt;</a>
       <a class="term-link" href="/writing/"><T zh="全部文章" en="All writing" /> &gt;&gt;</a>
     </Board>
