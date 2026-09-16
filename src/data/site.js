@@ -5,10 +5,10 @@ export const site = {
   title: { zh: 'IrisGo.AI 共同創辦人暨營運長', en: 'Co-founder & COO, IrisGo.AI' },
   tagline: {
     zh: '連續創業三十年，從 1994 年的校園 BBS 一路走到 Agentic AI。',
-    en: 'Thirty years of starting things, from a 1994 campus bulletin board to agentic AI.',
+    en: 'Thirty years of building, from a 1994 campus bulletin board to agentic AI.',
   },
   // 首頁標題卡的斷行版本
-  heroTitle: { zh: ['連續創業', '三十年。'], en: ['Thirty years', 'of starting things.'] },
+  heroTitle: { zh: ['連續創業', '三十年。'], en: ['Thirty years', 'of building.'] },
   heroSub: {
     zh: '從 1994 年的校園 BBS 一路走到 Agentic AI。',
     en: 'From a 1994 campus bulletin board to agentic AI.',
@@ -106,7 +106,7 @@ export const topics = [
     d: { zh: '從會聊天的 AI，到會替你動手的 agent。', en: 'From AI that chats to agents that act for you.' },
   },
   {
-    t: { zh: '創業三十年：從校園 BBS 到 Agentic AI', en: 'Thirty years of starting things' },
+    t: { zh: '創業三十年：從校園 BBS 到 Agentic AI', en: 'Thirty years of building' },
     d: { zh: '每一次轉彎學到什麼，哪些是運氣、哪些是準備。', en: 'From a campus BBS to agentic AI, and what each turn taught.' },
   },
   {
