@@ -24,7 +24,7 @@ const count = (y) => mediumPosts.filter((p) => p.date.startsWith(y)).length;
       {years.map((y) => <a class="term-link" href={`#y${y}`}>{y}<span class="n">({count(y)})</span></a>)}
     </nav>
     <Board posts={mediumPosts} anchors>
-      <span><T zh={`Medium 上的 ${mediumPosts.length} 篇舊文，點標題會開 Medium 原文。`} en={`${mediumPosts.length} earlier posts. Titles open the original on Medium.`} /></span>
+      <span><T zh={`Medium 上的 ${mediumPosts.length} 篇，點標題會開原文；標「會員」的要 Medium 會員才看得完。`} en={`${mediumPosts.length} posts on Medium. Titles open the original; the ones marked Members need a Medium membership.`} /></span>
       <a class="term-link" href={mediumProfile} rel="me noopener"><T zh="Medium 個人頁" en="Medium profile" /> &gt;&gt;</a>
     </Board>
   </section>

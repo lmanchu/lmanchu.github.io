@@ -1,7 +1,8 @@
 ---
 import T from './T.astro';
 
-// 文章列表做成 BBS 看板。posts: [{ date: 'YYYY-MM-DD', title, url, lang? }]，目前都是 Medium 舊文（lang 省略＝中文）。
+// 文章列表做成 BBS 看板。posts: [{ date: 'YYYY-MM-DD', title, url, lang?, locked? }]，
+// 目前都是 Medium 文章（lang 省略＝中文，locked＝需要 Medium 會員）。
 // anchors：年份分隔線加上 id（y2023…），給文章頁的年份索引跳轉
 const { posts, limit, anchors = false } = Astro.props;
 const list = limit ? posts.slice(0, limit) : posts;
@@ -31,7 +32,7 @@ const md = (d) => d.slice(5).replace('-', '/');
               <span class="cur" aria-hidden="true">&gt;</span>
               <span class="d">{md(p.date)}</span>
               <span class="l">{p.lang === 'en' ? <T zh="英文" en="EN" /> : <T zh="中文" en="ZH" />}</span>
-              <span class="t" lang={p.lang === 'en' ? 'en' : 'zh-Hant'}>{p.title}</span>
+              <span class="t" lang={p.lang === 'en' ? 'en' : 'zh-Hant'}>{p.title}{p.locked && <span class="tag"><T zh="會員" en="Members" /></span>}</span>
             </a>
           </li>
         ))}

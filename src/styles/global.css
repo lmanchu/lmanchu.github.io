@@ -151,6 +151,7 @@ body[data-lang="en"] .hero-title { font-size: clamp(40px, 6.2vw, 88px); line-hei
 .board-row .l { color: var(--ansi-gray); font-size: 18px; }
 .board-row .l.bi { color: var(--ansi-cyan); }
 .board-row .t { font-family: var(--sans); font-size: 17px; line-height: 1.5; }
+.board-row .tag { font-family: var(--term); font-size: 16px; color: var(--faint); margin-left: 10px; white-space: nowrap; font-size-adjust: cap-height 0.733; }
 a.board-row:hover, a.board-row:focus-visible { background: var(--row-hi); color: var(--ink); outline: none; }
 a.board-row:hover .cur, a.board-row:focus-visible .cur { visibility: visible; }
 .board-foot { border-top: 1px solid var(--panel-line); margin-top: 8px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; font-size: 18px; line-height: 1.2; color: var(--faint); }
