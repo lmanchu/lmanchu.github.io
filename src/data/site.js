@@ -36,6 +36,25 @@ export const site = {
   ],
 };
 
+// 組織 → 官網。2026-09-18 逐一開啟確認過確實是該段經歷的那一家，才列在這裡。
+// 刻意不列（查不到可信官網，維持純文字）：
+//   南星創速器 SSX  southstarx.com 是 2024 年註冊的 GoDaddy 停車頁，與本人無關
+//   MOX 加速器      mox.vc 已易主為日本個人開發者；sosv.com/mox 導向 SOSV 通用頁
+//   夢之大地 BBS    無官網，中文維基亦無條目
+//   南京資訊        查無
+// 刻意不列（2026-09-18 決定）：Intel、Acer —— 合作關係加上官網連結會讀起來像對方背書。
+export const orgs = [
+  { href: 'https://irisgo.ai', zh: ['IrisGo.AI', 'IrisGo'], en: ['IrisGo.AI', 'IrisGo'] },
+  { href: 'https://aifund.ai', zh: ['AI Fund'], en: ['AI Fund'] },
+  { href: 'https://www.tallgeese.ai', zh: ['Tallgeese AI'], en: ['Tallgeese AI'] },
+  { href: 'https://biilabs.io', zh: ['BiiLabs'], en: ['BiiLabs'] },
+  { href: 'https://www.lileesystems.com', zh: ['LILEE Systems'], en: ['LILEE Systems'] },
+  { href: 'https://www.adlinktech.com', zh: ['凌華科技'], en: ['ADLINK'] },
+  { href: 'https://www.kontron.com', zh: ['Kontron Asia', 'Kontron'], en: ['Kontron Asia', 'Kontron'] },
+  { href: 'https://www.bnext.com.tw', zh: ['數位時代'], en: ['Business Next'] },
+  { href: 'https://www.ccns.io', zh: ['電腦網路愛好社 CCNS', 'CCNS'], en: ['Computer Network Club (CCNS)', 'CCNS'] },
+];
+
 // 年表：新 → 舊。kind: milestone | origin
 export const timeline = [
   {

@@ -37,6 +37,16 @@ body[data-lang="en"] .zh { display: none !important; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--signal); }
+/* 組織名稱連回官網：行文不斷，但掃視時看得出哪幾個字可以點 */
+a.org {
+  text-decoration: underline; text-decoration-style: dotted;
+  text-decoration-thickness: 1px; text-decoration-color: var(--faint);
+  text-underline-offset: 3px;
+}
+a.org:hover, a.org:focus-visible { color: var(--signal); text-decoration-color: var(--signal); }
+/* CRT 畫面用 BBS 的青色慣例——虛線畫在點陣字底下會糊成一片 */
+.crt-screen a.org { color: var(--ansi-cyan); text-decoration: none; }
+.crt-screen a.org:hover, .crt-screen a.org:focus-visible { color: var(--ansi-blue); background: var(--ansi-cyan); }
 :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
 h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }

@@ -1,0 +1,7 @@
+---
+// 跟 T.astro 一樣的中英雙語片段，但吃的是已經過 linkOrgs 的 HTML。
+// 連結化一律在呼叫端的 frontmatter 先算好——元件的求值順序不保證，
+// 交給元件自己算會讓「同一組織只連第一次」連到錯的那一次（見 lib/orglinks.js）。
+const { zh, en } = Astro.props;
+---
+<span class="zh" set:html={zh}></span><span class="en" lang="en" set:html={en}></span>

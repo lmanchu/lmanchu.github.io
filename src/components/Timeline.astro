@@ -1,8 +1,28 @@
 ---
 import T from './T.astro';
+import TL from './TL.astro';
 import { site, timeline } from '../data/site.js';
+import { linkOrgs, linkPair, newScope } from '../lib/orglinks.js';
 
 const { withNow = true } = Astro.props;
+
+// 每一則年表各有一份 scope，標題與描述共用，同一個組織在一則裡只連第一次。
+// 順序就是顯示順序：標題先、描述／內文後。
+const entries = timeline.map((e) => {
+  const scope = newScope();
+  const title = linkPair(e.title, scope);
+  const desc = e.desc ? linkPair(e.desc, scope) : null;
+  const lines = e.lines
+    ? {
+        zh: e.lines.zh.map((l) => linkOrgs(l, 'zh', scope)),
+        en: e.lines.en.map((l) => linkOrgs(l, 'en', scope)),
+      }
+    : null;
+  return { ...e, title, desc, lines };
+});
+
+const nowScope = newScope();
+const nowItems = site.now.map((n) => linkPair(n, nowScope));
 ---
 <ol class="tl">
   {withNow && (
@@ -16,12 +36,12 @@ const { withNow = true } = Astro.props;
         </div>
         <h3 class="tl-title"><T zh="目前在做" en="What I'm doing now" /></h3>
         <ul class="now-list">
-          {site.now.map((n) => <li><span><T zh={n.zh} en={n.en} /></span></li>)}
+          {nowItems.map((n) => <li><span><TL zh={n.zh} en={n.en} /></span></li>)}
         </ul>
       </div>
     </li>
   )}
-  {timeline.map((e) => (
+  {entries.map((e) => (
     <li class="tl-item">
       <div class="tl-year" aria-hidden="true">{e.year}</div>
       <div class="tl-rail" aria-hidden="true"><span class="tl-node"></span><span class="tl-line"></span></div>
@@ -35,9 +55,9 @@ const { withNow = true } = Astro.props;
             <div class="crt-screen">
               <div class="crt-top" aria-hidden="true"><span>【 <T zh="成大 CCNS" en="NCKU CCNS" /> 】</span><span class="yr">{e.year}</span></div>
               <div class="crt-text">
-                <h3><span class="sr-only">{e.year} </span><T zh={e.title.zh} en={e.title.en} /></h3>
-                <p class="zh crt-lines">{e.lines.zh.map((line) => <span>{line}</span>)}</p>
-                <p class="en crt-lines" lang="en">{e.lines.en.map((line) => <span>{line}</span>)}</p>
+                <h3><span class="sr-only">{e.year} </span><TL zh={e.title.zh} en={e.title.en} /></h3>
+                <p class="zh crt-lines">{e.lines.zh.map((line) => <span set:html={line}></span>)}</p>
+                <p class="en crt-lines" lang="en">{e.lines.en.map((line) => <span set:html={line}></span>)}</p>
                 <span class="crt-prompt" aria-hidden="true">&gt; <span class="cursor">_</span></span>
               </div>
               <div class="crt-status" aria-hidden="true"><span>【注音】</span><span>倚天中文</span></div>
@@ -45,8 +65,8 @@ const { withNow = true } = Astro.props;
           </div>
         ) : (
           <>
-            <h3 class="tl-title"><span class="sr-only">{e.year} </span><T zh={e.title.zh} en={e.title.en} /></h3>
-            <p class="tl-desc"><T zh={e.desc.zh} en={e.desc.en} /></p>
+            <h3 class="tl-title"><span class="sr-only">{e.year} </span><TL zh={e.title.zh} en={e.title.en} /></h3>
+            <p class="tl-desc"><TL zh={e.desc.zh} en={e.desc.en} /></p>
           </>
         )}
       </div>
