@@ -1,16 +1,34 @@
 ---
 import Base from '../layouts/Base.astro';
 import T from '../components/T.astro';
+import TL from '../components/TL.astro';
 import Timeline from '../components/Timeline.astro';
 import Contact from '../components/Contact.astro';
 import { topics, photos, alsoRoles } from '../data/site.js';
 import { bio } from '../data/bio.js';
+import { linkOrgs, linkPair, newScope } from '../lib/orglinks.js';
 
 const small = [
   { id: 'c-name', label: { zh: '姓名', en: 'Name' }, text: bio.name },
   { id: 'c-title', label: { zh: '職稱', en: 'Title' }, text: bio.title },
   { id: 'c-edu', label: { zh: '學歷', en: 'Education' }, text: bio.edu },
 ];
+
+// 每個區塊各一份 scope，在這裡依顯示順序算完（見 lib/orglinks.js 的順序警告）。
+// 完整版四段共用一份，IrisGo 這種每段都出現的名字只連第一次。
+const nowTitle = linkPair(bio.title, newScope());
+const shortBio = linkPair(bio.short, newScope());
+const fullScope = newScope();
+const fullBio = {
+  zh: bio.full.zh.map((p) => linkOrgs(p, 'zh', fullScope)),
+  en: bio.full.en.map((p) => linkOrgs(p, 'en', fullScope)),
+};
+const shortBioEn = linkOrgs(bio.short.en, 'en', newScope());
+const alsoRolesLinked = linkPair(alsoRoles, newScope());
+const topicItems = topics.map((t) => {
+  const scope = newScope();
+  return { t: linkPair(t.t, scope), d: linkPair(t.d, scope) };
+});
 ---
 <Base
   title="講者資料"
@@ -25,7 +43,7 @@ const small = [
         <h1 id="kit-title" class="card-title"><T zh="朱宜振" en="Lman Chu" /></h1>
         <p class="lead"><T zh="主辦單位可以直接複製使用，不需要另外詢問。依版面選一個長度。" en="Organisers are welcome to copy these as they are. Pick the length that fits your layout." /></p>
         <dl class="kit-facts">
-          <dt><T zh="現職" en="Now" /></dt><dd><T zh={bio.title.zh} en={bio.title.en} /></dd>
+          <dt><T zh="現職" en="Now" /></dt><dd><TL zh={nowTitle.zh} en={nowTitle.en} /></dd>
           <dt><T zh="學歷" en="Education" /></dt><dd><T zh={bio.edu.zh} en={bio.edu.en} /></dd>
           <dt><T zh="專長" en="Focus" /></dt><dd><T zh={bio.focus.zh} en={bio.focus.en} /></dd>
         </dl>
@@ -51,22 +69,22 @@ const small = [
       <div class="panel">
         <div class="panel-head"><span><T zh="短版" en="Short" /><span class="meta" data-count="c-short"></span></span><button type="button" class="copy" data-target="c-short"><T zh="複製" en="Copy" /></button></div>
         <div class="panel-body" id="c-short">
-          <p class="zh">{bio.short.zh}</p>
-          <p class="en" lang="en">{bio.short.en}</p>
+          <p class="zh" set:html={shortBio.zh}></p>
+          <p class="en" lang="en" set:html={shortBio.en}></p>
         </div>
       </div>
 
       <div class="panel">
         <div class="panel-head"><span><T zh="完整版" en="Full" /><span class="meta" data-count="c-full"></span></span><button type="button" class="copy" data-target="c-full"><T zh="複製" en="Copy" /></button></div>
         <div class="panel-body" id="c-full">
-          <div class="zh">{bio.full.zh.map((p) => <p>{p}</p>)}</div>
-          <div class="en" lang="en">{bio.full.en.map((p) => <p>{p}</p>)}</div>
+          <div class="zh">{fullBio.zh.map((p) => <p set:html={p}></p>)}</div>
+          <div class="en" lang="en">{fullBio.en.map((p) => <p set:html={p}></p>)}</div>
         </div>
       </div>
 
       <div class="panel zh">
         <div class="panel-head"><span>英文短版<span class="meta" data-count="c-short-en"></span></span><button type="button" class="copy" data-target="c-short-en">複製</button></div>
-        <div class="panel-body" id="c-short-en" lang="en"><p>{bio.short.en}</p></div>
+        <div class="panel-body" id="c-short-en" lang="en"><p set:html={shortBioEn}></p></div>
       </div>
     </div>
   </section>
@@ -95,7 +113,7 @@ const small = [
       <p class="section-note"><T zh="從網路社群、硬體、新創育成，到 AI。" en="Internet communities, hardware, accelerators, then AI." /></p>
     </div>
     <Timeline withNow={false} />
-    <p class="also"><b><T zh="其他" en="Also" /></b><T zh={alsoRoles.zh} en={alsoRoles.en} /></p>
+    <p class="also"><b><T zh="其他" en="Also" /></b><TL zh={alsoRolesLinked.zh} en={alsoRolesLinked.en} /></p>
   </section>
 
   <section class="section" id="topics" aria-labelledby="topics-h">
@@ -104,8 +122,8 @@ const small = [
       <p class="section-note"><T zh="可依聽眾調整長度與深度，學生、企業、創業社群都講過。" en="Length and depth adjust to the room: students, companies, founder communities." /></p>
     </div>
     <ul class="topics">
-      {topics.map((t) => (
-        <li><span class="t"><T zh={t.t.zh} en={t.t.en} /></span><span class="d"><T zh={t.d.zh} en={t.d.en} /></span></li>
+      {topicItems.map((t) => (
+        <li><span class="t"><TL zh={t.t.zh} en={t.t.en} /></span><span class="d"><TL zh={t.d.zh} en={t.d.en} /></span></li>
       ))}
     </ul>
   </section>

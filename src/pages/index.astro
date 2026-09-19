@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import T from '../components/T.astro';
+import TL from '../components/TL.astro';
+import { linkPair, newScope } from '../lib/orglinks.js';
 import YearRuler from '../components/YearRuler.astro';
 import Timeline from '../components/Timeline.astro';
 import Board from '../components/Board.astro';
@@ -20,6 +22,12 @@ const formattedLocalPosts = localPosts.map((p) => ({
 }));
 
 const allPosts = [...formattedLocalPosts, ...mediumPosts].sort((a, b) => b.date.localeCompare(a.date));
+
+// 每個講題各一份 scope：標題與說明共用，同一個組織只連第一次。
+const topicItems = topics.map((t) => {
+  const scope = newScope();
+  return { t: linkPair(t.t, scope), d: linkPair(t.d, scope) };
+});
 ---
 <Base description={description} ogTitle={`朱宜振 Lman Chu｜${site.title.zh}`} current="/" path="/">
   <section class="hero" aria-labelledby="hero-title">
@@ -70,8 +78,8 @@ const allPosts = [...formattedLocalPosts, ...mediumPosts].sort((a, b) => b.date.
     <div class="teaser-side">
       <p class="tag-line">[<T zh="可以邀我講的題目" en="Talks I give" />]</p>
       <ul class="topics">
-        {topics.map((t) => (
-          <li><span class="t"><T zh={t.t.zh} en={t.t.en} /></span><span class="d"><T zh={t.d.zh} en={t.d.en} /></span></li>
+        {topicItems.map((t) => (
+          <li><span class="t"><TL zh={t.t.zh} en={t.t.en} /></span><span class="d"><TL zh={t.d.zh} en={t.d.en} /></span></li>
         ))}
       </ul>
       <p class="more"><a class="term-link" href="/speaking/"><T zh="前往講者資料" en="Open the speaker kit" /> &gt;&gt;</a></p>

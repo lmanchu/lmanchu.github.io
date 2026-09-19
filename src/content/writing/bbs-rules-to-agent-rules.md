@@ -8,9 +8,9 @@ description_en: "Managing a BBS station and managing a group of Agents share the
 lang: "bilingual"
 ---
 
-<p class="zh">1994 年，台南成大。在那個還在用 modem 撥接、telnet 連線的年代，我跟著學長和一群朋友創辦了成大電腦網路愛好社 CCNS（NCKU Computer Network Club）並擔任創社社長。同時，原本存在於化學系內的「夢之大地 BBS」也移交給了 CCNS 維護，成為社群的 legacy。那時身為創社社長，每天除了研究系統與架站，最重要、也最讓我頭痛的工作之一，就是寫「站規」和管理使用者權限。</p>
+<p class="zh">1994 年，台南成大。在那個還在用 modem 撥接、telnet 連線的年代，我跟著學長和一群朋友創辦了<a class="org" href="https://www.ccns.io" target="_blank" rel="noopener">成大電腦網路愛好社 CCNS</a>（NCKU Computer Network Club）並擔任創社社長。同時，原本存在於化學系內的「夢之大地 BBS」也移交給了 CCNS 維護，成為社群的 legacy。那時身為創社社長，每天除了研究系統與架站，最重要、也最讓我頭痛的工作之一，就是寫「站規」和管理使用者權限。</p>
 
-<p class="en" lang="en">Tainan, 1994. In an era dominated by dial-up modems and telnet connections, my seniors, peers, and I founded the NCKU Computer Network Club, CCNS. Around the same time, "DreamLand BBS", which originally sat in the Chemistry Department, was transferred to CCNS for maintenance, becoming our community's legacy. As the founding president, beyond tinkering with systems and setting up servers, one of my most critical and head-scratching tasks was drafting "BBS Station Rules" and managing user permissions.</p>
+<p class="en" lang="en">Tainan, 1994. In an era dominated by dial-up modems and telnet connections, my seniors, peers, and I founded the <a class="org" href="https://www.ccns.io" target="_blank" rel="noopener">NCKU Computer Network Club, CCNS</a>. Around the same time, "DreamLand BBS", which originally sat in the Chemistry Department, was transferred to CCNS for maintenance, becoming our community's legacy. As the founding president, beyond tinkering with systems and setting up servers, one of my most critical and head-scratching tasks was drafting "BBS Station Rules" and managing user permissions.</p>
 
 <p class="zh">那時候的 BBS 站規，背後的核心邏輯其實很簡單，就是「誰可以做什麼，做錯了怎麼辦」。寫 C 語言原始碼架站並不是最難的，難的是人性的邊界。哪些板面只有特定的板主能管？如果普通使用者在發言區越界造謠了，SYSOP（站長）應該直接砍帳號，還是先停權三天？如何寫出一套清晰的「站規」，讓幾千、甚至幾萬個血氣方剛的大學生在虛擬空間裡和諧共處？我們在用文字定義一整個虛擬社群的社會契約。</p>
 
