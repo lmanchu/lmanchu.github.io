@@ -1,5 +1,14 @@
 export const localPosts = [
   {
+    id: "who-holds-your-context",
+    date: "2026-09-19",
+    title: {
+      zh: "誰握著你的 context",
+      en: "Who Holds Your Context"
+    },
+    lang: "bilingual"
+  },
+  {
     id: "bbs-rules-to-agent-rules",
     date: "2026-09-16",
     title: {
