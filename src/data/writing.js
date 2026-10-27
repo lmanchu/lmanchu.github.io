@@ -1,5 +1,14 @@
 export const localPosts = [
   {
+    id: "you-cant-download-accountability",
+    date: "2026-10-27",
+    title: {
+      zh: "功夫可以下載，責任不行",
+      en: "You Can Download Kung Fu. You Can't Download Accountability."
+    },
+    lang: "bilingual"
+  },
+  {
     id: "who-holds-your-context",
     date: "2026-09-19",
     title: {
