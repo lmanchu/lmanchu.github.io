@@ -28,6 +28,10 @@ const titleEn = post.data.title_en;
   current="/writing/"
   path={`/writing/${post.id}/`}
   image={post.data.hero}
+  imageWidth={post.data.hero ? 2400 : undefined}
+  imageHeight={post.data.hero ? 1260 : undefined}
+  imageAlt={post.data.hero_alt}
+  ogType="article"
 >
   <article class="post-article">
     <div class="bbs-header" aria-hidden="true">
