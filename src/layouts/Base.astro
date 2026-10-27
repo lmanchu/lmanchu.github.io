@@ -4,10 +4,10 @@ import StatusBar from '../components/StatusBar.astro';
 import T from '../components/T.astro';
 import { site } from '../data/site.js';
 
-const { title, description, ogTitle, current = '/', path = '/' } = Astro.props;
+const { title, description, ogTitle, image, current = '/', path = '/' } = Astro.props;
 const pageTitle = title ? `${title}｜朱宜振 Lman Chu` : '朱宜振 Lman Chu';
 const canonical = new URL(path, site.url).href;
-const ogImage = new URL('/photos/lman-hero-web.jpg', site.url).href;
+const ogImage = new URL(image ?? '/photos/lman-hero-web.jpg', site.url).href;
 const year = new Date().getFullYear();
 const updated = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Taipei' });
 ---

@@ -11,6 +11,10 @@ const writing = defineCollection({
     description: z.string(),
     description_en: z.string().optional(),
     lang: z.string().optional(),
+    hero: z.string().optional(),
+    hero_en: z.string().optional(),
+    hero_alt: z.string().optional(),
+    hero_alt_en: z.string().optional(),
   })
 });
 
